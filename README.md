@@ -7,3 +7,17 @@
 - [ ] Release ScenePair benchmark dataset and evaluation code;
 - [ ] Release training code;
 - [ ] Provide publicly accessible demo link;
+
+
+## Installation
+
+## Inference
+
+## Training
+
+## Evaluation
+### 1.Data Preparation
+Download the ScenePair dataset from [OneDrive](https://1drv.ms/u/s!Au6KdVy-InOMb3FcqQrlWqYpWg4?e=MjTBJ3) and unzip the files. *i_s* folder stores the source cropped text images, *t_f* folder stores the target cropped text images and *i_full* folder stores the full-size images. Filename and text label of source images and target images are recorded in *i_s.txt*/*i_t.txt* respectively, with the corresponding location information in full-size images recorded in *i_s_full.txt*/*i_t_full.txt* respectively.   
+
+
+## Citation
