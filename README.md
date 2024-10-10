@@ -28,7 +28,10 @@ Download the ScenePair dataset from [GoogleDrive](https://drive.google.com/file/
 │   ├── i_s_full.txt        # filename, text label, corresponding full-size image name and location information of images in i_s/
 │   └── i_t_full.txt        # filename, text label, corresponding full-size image name and location information of images in t_f/
 ```
-### 2. Style Fidelity
+### 2. Generate Images
+Before evaluation, corresponding edited images should be generated for a certain method based on the ScenePair dataset and should be saved in a *'.../result_folder/'* with the same filename. Result of some methods on ScenePair dataset are provided [here](https://drive.google.com/file/d/1343td96X7SuE0hYsMbTHALFmr1Md7SnQ/view?usp=drive_link).
+
+### 3. Style Fidelity
 SSIM, PSNR, MSE and FID are uesd to evaluate the style fidelity of edited result, with reference to [qqqyd/MOSTEL](https://github.com/qqqyd/MOSTEL)
 .
 ```bash
@@ -36,7 +39,8 @@ $ cd evaluation/
 $ python evaluation.py --target_path .../result_folder/ --gt_path .../ScenePair/t_f/
 ```
 
-### 3. Text Accuracy
-ACC and NED are used to evaluate the text accuracy of edited result, with the offical code and checkpoint in [clovaai/deep-text-recognition-benchmark](https://github.com/clovaai/deep-text-recognition-benchmark).
+### 4. Text Accuracy
+ACC and NED are used to evaluate the text accuracy of edited result, with the offical code and checkpoint in [clovaai/deep-text-recognition-benchmark](https://github.com/clovaai/deep-text-recognition-benchmark).  
+
 
 ## Citation
