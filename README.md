@@ -16,8 +16,27 @@
 ## Training
 
 ## Evaluation
-### 1.Data Preparation
-Download the ScenePair dataset from [GoogleDrive](https://drive.google.com/file/d/1m_o2R2kFj_hDXJP5K21aC7lKs-eUky9s/view?usp=sharing) and unzip the files. *i_s* folder stores the source cropped text images, *t_f* folder stores the target cropped text images and *i_full* folder stores the full-size images. Filename and text label of source images and target images are recorded in *i_s.txt*/*i_t.txt* respectively, with the corresponding location information in full-size images recorded in *i_s_full.txt*/*i_t_full.txt* respectively.   
+### 1. Data Preparation
+Download the ScenePair dataset from [GoogleDrive](https://drive.google.com/file/d/1m_o2R2kFj_hDXJP5K21aC7lKs-eUky9s/view?usp=sharing) and unzip the files. The structure of each folder is as follows:  
+```bash
+├── ScenePair/
+│   ├── i_s/                # source cropped text images
+│   ├── t_f/                # target cropped text images
+│   ├── i_full/             # full-size images
+│   ├── i_s.txt             # filename and text label of images in i_s/
+│   ├── i_t.txt             # filename and text label of images in t_f/
+│   ├── i_s_full.txt        # filename, text label, corresponding full-size image name and location information of images in i_s/
+│   └── i_t_full.txt        # filename, text label, corresponding full-size image name and location information of images in t_f/
+```
+### 2. Style Fidelity
+SSIM, PSNR, MSE and FID are uesd to evaluate the style fidelity of edited result, with reference to [qqqyd/MOSTEL](https://github.com/qqqyd/MOSTEL)
+.
+```bash
+$ cd evaluation/
+$ python evaluation.py --target_path .../result_folder/ --gt_path .../ScenePair/t_f/
+```
 
+### 3. Text Accuracy
+Acc and NED are used to evaluate the text accuracy of edited result, with the offical code and checkpoint in [clovaai/deep-text-recognition-benchmark](https://github.com/clovaai/deep-text-recognition-benchmark).
 
 ## Citation
