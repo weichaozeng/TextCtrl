@@ -77,12 +77,6 @@ def msssim(img1, img2):
     mssim_power = np.power(np.abs(mssim[level - 1]), weight[level - 1])
     return np.prod(sign_mcs * mcs_power) * sign_mssim * mssim_power
 
-def ImageTransform(loadSize):
-    return Compose([
-        Resize(size=loadSize, interpolation=Image.BICUBIC),
-        ToTensor(),
-    ])
-
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--target_path', type=str, default='', help='results')
