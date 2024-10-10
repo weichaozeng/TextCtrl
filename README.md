@@ -37,6 +37,6 @@ $ python evaluation.py --target_path .../result_folder/ --gt_path .../ScenePair/
 ```
 
 ### 3. Text Accuracy
-Acc and NED are used to evaluate the text accuracy of edited result, with the offical code and checkpoint in [clovaai/deep-text-recognition-benchmark](https://github.com/clovaai/deep-text-recognition-benchmark).
+ACC and NED are used to evaluate the text accuracy of edited result, with the offical code and checkpoint in [clovaai/deep-text-recognition-benchmark](https://github.com/clovaai/deep-text-recognition-benchmark).
 
 ## Citation
