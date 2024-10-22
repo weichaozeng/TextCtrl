@@ -53,3 +53,9 @@ ACC and NED are used to evaluate the text accuracy of edited result, with the of
 
 
 ## Citation
+    @article{zeng2024textctrl,
+    title={TextCtrl: Diffusion-based Scene Text Editing with Prior Guidance Control},
+    author={Zeng, Weichao and Shu, Yan and Li, Zhenhang and Yang, Dongbao and Zhou, Yu},
+    journal={arXiv preprint arXiv:2410.10133},
+    year={2024}
+    }
