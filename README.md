@@ -10,6 +10,13 @@
 
 
 ## Installation
+```bash
+$ git clone https://github.com/weichaozeng/TextCtrl.git
+$ cd TextCtrl/
+$ conda env create -f environment.yaml
+$ conda activate textctrl
+```
+
 
 ## Inference
 
