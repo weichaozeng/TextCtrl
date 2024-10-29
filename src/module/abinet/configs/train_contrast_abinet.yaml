@@ -1,0 +1,103 @@
+lightning:
+  logger:
+  callbacks: {}
+  modelcheckpoint:
+    monitor: "val/loss"
+  trainer:
+    benchmark: true
+
+trainer:
+  accelerator: gpu
+  devices: [6, ]
+  strategy: ddp
+  amp_backend: native
+  log_every_n_steps: 50 # this is global step
+  precision: 16
+  max_epochs: 10
+  check_val_every_n_epoch: 1
+  accumulate_grad_batches: 1
+
+
+model_eval: alignment
+model:
+  name: 'abinet.modules.model_abinet_iter.ContrastABINetIterModel'
+  iter_size: 3
+  ensemble: ''
+  use_vision: False
+  max_length: ${dataset.max_length}
+  charset_path: ${dataset.charset_path}
+
+  source: "raw"
+  base_learning_rate: 1e-3
+  precision: ${trainer.precision}
+  weight_decay: 0.0
+  adam_epsilon: 1.0e-8
+
+  vision:
+    checkpoint: checkpoints/abinet/pretrain-vision-model/best-pretrain-vision-model.pth
+    loss_weight: 1.
+    attention: 'position'
+    backbone: 'transformer'
+    backbone_ln: 3
+    d_model: 512
+    charset_path: ${model.charset_path}
+
+    class_num_heads: 8
+    contrast_hidden_dim: 512
+    max_length: ${model.max_length}
+
+  language:
+    checkpoint:  checkpoints/abinet/pretrain-language-model/pretrain-language-model.pth
+    num_layers: 4
+    loss_weight: 1.
+    detach: True
+    use_self_attn: False
+    max_length: ${model.max_length}
+    charset_path: ${model.charset_path}
+
+  alignment: 
+    loss_weight: 1.
+    max_length: ${model.max_length}
+    charset_path: ${model.charset_path}
+
+  char_tokenizer:
+    pretrained_path: "checkpoint/abinet/chartokenizer"
+    pad_token: "\u2591"
+    unk_token: "\u2591"
+    cls_token: "[bos]"
+
+  char_embedder: 
+    vocab_size: 95 # by default
+    embedding_dim: 32
+    padding_idx: 0
+    attention_head_dim: 2
+    encoder:
+      contrast_hidden_dim: 512
+      num_heads: 8
+      num_encoder_layers: 2
+
+data:
+  batch_size: 128
+  base_dir: dataset/ocr-dataset/SynthText/data_dir/
+  train:
+    target: "train_abinet.ContrastOCRData"
+    params: 
+      data_csv: ${data.base_dir}/expand_train.csv
+      img_dir: ${data.base_dir}
+      is_raw_synth: True
+      width: 128 # same as ABINet
+      height: 32
+      multiscale: True
+      training: False
+  
+  validation:
+    target: "train_abinet.ContrastOCRData"
+    params:
+      data_csv: ${data.base_dir}/expand_val.csv
+      img_dir: ${data.base_dir}
+      is_raw_synth: True
+      width: 128
+      height: 32
+      multiscale: False
+      training: False
+    

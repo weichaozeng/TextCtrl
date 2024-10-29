@@ -1,0 +1,35 @@
+global:
+  name: train-abinet
+  phase: train
+  stage: train-super
+  workdir: workdir
+  seed: ~
+
+model:
+  name: 'abinet.modules.model_abinet_iter.ABINetIterModel'
+  max_length: ${dataset.max_length}
+  charset_path: ${dataset.charset_path}
+  iter_size: 3
+  ensemble: ''
+  use_vision: False
+  vision:
+    checkpoint: checkpoints/abinet/pretrain-vision-model/best-pretrain-vision-model.pth
+    loss_weight: 1.
+    attention: 'position'
+    backbone: 'transformer'
+    backbone_ln: 3
+    max_length: ${model.max_length}
+    charset_path: ${model.charset_path}
+  language:
+    checkpoint:  checkpoints/abinet/pretrain-language-model/pretrain-language-model.pth
+    num_layers: 4
+    loss_weight: 1.
+    detach: True
+    use_self_attn: False
+    max_length: ${model.max_length}
+    charset_path: ${model.charset_path}
+  alignment:
+    loss_weight: 1.
+    max_length: ${model.max_length}
+    charset_path: ${model.charset_path}
+ 
