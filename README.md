@@ -10,23 +10,41 @@
 
 
 ## Installation
+### 1.Code Preparation 
 ```bash
+# Clone the repo
 $ git clone https://github.com/weichaozeng/TextCtrl.git
 $ cd TextCtrl/
+# Install required packages
 $ conda create --name textctrl python=3.8
 $ conda activate textctrl
 $ pip install torch==1.13.0+cu116 torchvision==0.14.0+cu116 torchaudio==0.13.0 --extra-index-url https://download.pytorch.org/whl/cu116
 $ pip install -r requirement.txt
 ```
-
-
+### 2. Checkpoints Preparation
+Download the checkpoints from Link (still preparing) and unzip the files.The file structures should be set as follows:
+```bash
+TextCtrl/
+├── weights/
+│   ├── sd/                           # pretrained diffusion ckpt
+│   ├── style_encoder.pth             # style encoder ckpt
+│   ├── vision_model.pth              # monitor ckpt
+│   ├── model.pth                     # textctrl ckpt
+│   ├── text_encoder.pth              # glyph encoder ckpt
+│   └── vgg19.pth                     # vgg ckpt     
+├── README.md
+├── ...
+```
 ## Inference
+
+
+
 
 ## Training
 
 ## Evaluation
 ### 1. Data Preparation
-Download the ScenePair dataset from [GoogleDrive](https://drive.google.com/file/d/1m_o2R2kFj_hDXJP5K21aC7lKs-eUky9s/view?usp=sharing) and unzip the files. The structure of each folder is as follows:  
+Download the ScenePair dataset from [Link](https://drive.google.com/file/d/1m_o2R2kFj_hDXJP5K21aC7lKs-eUky9s/view?usp=sharing) and unzip the files. The structure of each folder is as follows:  
 ```bash
 ├── ScenePair/
 │   ├── i_s/                # source cropped text images
