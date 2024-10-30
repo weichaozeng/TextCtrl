@@ -4,8 +4,8 @@
 
 ## TODOs
 - [x] Release ScenePair benchmark dataset and evaluation code;
-- [ ] Release the model and inference code;
-- [ ] Release training code;
+- [x] Release the model and inference code;
+- [ ] Release checkpoints and training code;
 - [ ] Provide publicly accessible demo link;
 
 
