@@ -27,11 +27,12 @@ Download the checkpoints from Link (still preparing) and unzip the files.The fil
 TextCtrl/
 ├── weights/
 │   ├── sd/                           # pretrained diffusion ckpt
-│   ├── style_encoder.pth             # style encoder ckpt
-│   ├── vision_model.pth              # monitor ckpt
 │   ├── model.pth                     # textctrl ckpt
-│   ├── text_encoder.pth              # glyph encoder ckpt
-│   └── vgg19.pth                     # vgg ckpt     
+│   ├── style_encoder.pth             # pretrained style encoder ckpt
+│   ├── text_encoder.pth              # pretrained glyph encoder ckpt
+│   ├── vision_model.pth              # pretrained monitor ckpt
+│   ├── ocr_model.pth                 # pretrained recognition ckpt
+│   └── vgg19.pth                     # pretrained vgg ckpt     
 ├── README.md
 ├── ...
 ```
