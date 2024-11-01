@@ -169,7 +169,7 @@ class LabelEncoder(AbstractEmbModel):
         self.encoder = nn.TransformerEncoder(transformer_block, num_layers=self.n_trans_layers)
 
         if ckpt_path is not None:
-            self.load_state_dict(torch.load(ckpt_path, map_location="cpu")["state_dict"], strict=False)  
+            self.load_state_dict(torch.load(ckpt_path, map_location="cpu"), strict=False)  
 
 
     def freeze(self):
