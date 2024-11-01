@@ -91,8 +91,7 @@ def main(opt):
             result = text_editing_benchmark(pipeline, source_image, style_image, style_text, target_text,
                                     starting_layer=starting_layer,
                                     ddim_steps=num_inference_steps,
-                                    scale=guidance_scale,
-                                    seed=seed, )
+                                    scale=guidance_scale)
             GaMuSA_image = result
             GaMuSA_image = Image.fromarray((GaMuSA_image * 255).astype(np.uint8))
             GaMuSA_image.save(os.path.join(output_dir, image_name))
@@ -103,8 +102,7 @@ def main(opt):
             result = text_editing_demo(pipeline, source_image, style_image, style_text, target_text,
                                     starting_layer=starting_layer,
                                     ddim_steps=num_inference_steps,
-                                    scale=guidance_scale,
-                                    seed=seed, )
+                                    scale=guidance_scale)
             reconstruction_image, _, GaMuSA_image = result[:]
 
             reconstruction_image = Image.fromarray((reconstruction_image * 255).astype(np.uint8)).resize((w, h))
