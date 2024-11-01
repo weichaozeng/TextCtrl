@@ -19,7 +19,6 @@ def load_image(image_path, image_height=256, image_width=256):
     return image.unsqueeze(0)
 
 
-
 def create_parser():
     parser = ArgumentParser()
     parser.add_argument("--seed", type=int, default=42)
@@ -36,8 +35,6 @@ def create_parser():
     parser.add_argument("--guidance_scale", default=2, type=float)
     parser.add_argument("--benchmark", action="store_true")
     return parser
-
-
 
 
 def main(opt):
@@ -63,8 +60,6 @@ def main(opt):
             if line != '\n':
                 image_name, text = line.strip().split(' ')[:]
                 target_dict[image_name] = text
-
-
     monitor_cfg = {
         "max_length": 25,
         "loss_weight": 1.,
@@ -72,11 +67,9 @@ def main(opt):
         "backbone": 'transformer',
         "backbone_ln": 3,
         "checkpoint": "weights/vision_model.pth",
-        "charset_path": "src/abinet/data/charset_36.txt"
-}
-
+        "charset_path": "src/module/abinet/data/charset_36.txt"
+    }
     pipeline = GaMuSA(model, monitor_cfg)
-
     output_dir = opt.output_dir
     os.makedirs(output_dir, exist_ok=True)
     seed = opt.seed
@@ -118,8 +111,6 @@ def main(opt):
             GaMuSA_image = Image.fromarray((GaMuSA_image * 255).astype(np.uint8)).resize((w, h))
             reconstruction_image.save(os.path.join(save_dir, 'recons_' + style_text + '.png'))
             GaMuSA_image.save(os.path.join(save_dir, 'GaMUSA_' + target_text + '.png'))
-
-
 
 
 if __name__ == "__main__":
