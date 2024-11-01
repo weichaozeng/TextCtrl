@@ -9,7 +9,7 @@ from src.MuSA.GaMuSA_app import text_editing_demo, text_editing_benchmark
 from src.MuSA.GaMuSA import GaMuSA
 from argparse import ArgumentParser
 from pytorch_lightning import seed_everything
-
+from utils import create_model, load_state_dict
 
 def load_image(image_path, image_height=256, image_width=256):
     device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
