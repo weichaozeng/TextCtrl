@@ -94,7 +94,7 @@ def main(opt):
         )
         if opt.benchmark:
             _, GaMuSA_image = result[:]
-            GaMuSA_image = Image.fromarray((GaMuSA_image * 255).astype(np.uint8))
+            GaMuSA_image = Image.fromarray((GaMuSA_image * 255).astype(np.uint8)).resize((w, h))
             GaMuSA_image.save(os.path.join(output_dir, image_name))
 
         else:
