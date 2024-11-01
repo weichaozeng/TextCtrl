@@ -26,13 +26,13 @@ Download the checkpoints from Link (still preparing) and unzip the files.The fil
 ```bash
 TextCtrl/
 ├── weights/
-│   ├── sd/                            # pretrained ckpt of stable-diffusion-v1-5
-│   ├── model.ckpt                     # textctrl ckpt
+│   ├── sd/                            # pretrained weight of stable-diffusion-v1-5
+│   ├── model.pth                      # textctrl weight
 │   ├── style_encoder.ckpt             # pretrained style encoder ckpt
 │   ├── text_encoder.ckpt              # pretrained glyph encoder ckpt
-│   ├── vision_model.pth               # pretrained monitor ckpt
-│   ├── ocr_model.pth                  # pretrained recognition ckpt
-│   └── vgg19.pth                      # pretrained vgg ckpt     
+│   ├── vision_model.pth               # monitor weight
+│   ├── ocr_model.pth                  # ocr weight
+│   └── vgg19.pth                      # vgg weight     
 ├── README.md
 ├── ...
 ```
