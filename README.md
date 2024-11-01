@@ -35,9 +35,9 @@ TextCtrl/
 │   ├── ocr_model.pth                  # ocr weight
 │   ├── vgg19.pth                      # vgg weight
 │   └── sd/                            # pretrained weight of stable-diffusion-v1-5
-│      ├── vae/
-│      ├── unet/
-│      └── scheduler/ 
+│       ├── vae/
+│       ├── unet/
+│       └── scheduler/ 
 ├── README.md
 ├── ...
 ```
