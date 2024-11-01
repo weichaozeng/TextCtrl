@@ -30,7 +30,7 @@ Download the checkpoints from [Link_1](still preparing) and [Link_2](https://hug
 TextCtrl/
 ├── weights/
 │   ├── model.pth                      # weight of style encoder and unet 
-│   ├── text_encoder.ckpt              # pretrained glyph encoder ckpt
+│   ├── text_encoder.pth               # weight of glyph encoder
 │   ├── vision_model.pth               # monitor weight
 │   ├── ocr_model.pth                  # ocr weight
 │   ├── vgg19.pth                      # vgg weight
