@@ -27,15 +27,13 @@ def create_parser():
     parser.add_argument("--teaget_width", default=256)
     parser.add_argument("--style_height", default=256)
     parser.add_argument("--style_width", default=256)
-    parser.add_argument("--ckpt_path", type=str, required=True)
-    parser.add_argument("--dataset_dir", type=str, required=True)
-    parser.add_argument("--output_dir", type=str, required=True)
-    parser.add_argument("--starting_step", default=4, type=int)
+    parser.add_argument("--ckpt_path", type=str, default="weights/model.pth")
+    parser.add_argument("--dataset_dir", type=str, default="example/")
+    parser.add_argument("--output_dir", type=str, default="example_result/")
     parser.add_argument("--starting_layer", default=10, type=int)
     parser.add_argument("--num_inference_steps", default=50)
     parser.add_argument("--num_sample_per_image", default=1, type=int)
     parser.add_argument("--guidance_scale", default=2, type=float)
-    parser.add_argument("--return_intermediates", action="store_true")
     parser.add_argument("--benchmark", action="store_true")
     return parser
 
@@ -43,8 +41,9 @@ def create_parser():
 
 
 def main(opt):
-    model_ckpt = opt.ckpt_path
-    model = ControlBase.load_from_checkpoint(model_ckpt).cuda()
+    cfg_path = 'configs/inference.yaml'
+    model = create_model(cfg_path).cuda()
+    model.load_state_dict(load_state_dict(opt.ckpt_path), strict=False)
     model.eval()
 
     dataset_dir = opt.dataset_dir
@@ -81,12 +80,10 @@ def main(opt):
     output_dir = opt.output_dir
     os.makedirs(output_dir, exist_ok=True)
     seed = opt.seed
-    starting_step = opt.starting_step
     starting_layer = opt.starting_layer
     guidance_scale = opt.guidance_scale
     num_sample_per_image = opt.num_sample_per_image
     num_inference_steps = opt.num_inference_steps
-    return_intermediates = opt.return_intermediates
     seed_everything(seed)
     for i in tqdm(range(len(list(style_images_path.keys())))):
         image_name = list(style_images_path.keys())[i]
