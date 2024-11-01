@@ -34,7 +34,7 @@ def create_parser():
     parser.add_argument("--num_inference_steps", default=50)
     parser.add_argument("--num_sample_per_image", default=1, type=int)
     parser.add_argument("--guidance_scale", default=2, type=float)
-    parser.add_argument("--benchmark", action="store_true")
+    parser.add_argument("--benchmark", default=True)
     return parser
 
 
