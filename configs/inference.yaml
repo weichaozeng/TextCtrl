@@ -30,7 +30,7 @@ model:
         params:
           max_len: 24
           emb_dim: 768
-          ckpt_path: "weights/sd/text_encoder.ckpt"
+          ckpt_path: "weights/text_encoder.pth"
 
       unet_pretrained: "weights/sd/unet/diffusion_pytorch_model.bin"
       unet:
