@@ -5,11 +5,12 @@ from PIL import Image
 import numpy as np
 import torchvision.transforms as T
 from tqdm import tqdm
-from src.MuSA.GaMuSA_app import text_editing_demo, text_editing_benchmark
+from src.MuSA.GaMuSA_app import text_editing
 from src.MuSA.GaMuSA import GaMuSA
 from argparse import ArgumentParser
 from pytorch_lightning import seed_everything
 from utils import create_model, load_state_dict
+
 
 def load_image(image_path, image_height=256, image_width=256):
     device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
@@ -86,25 +87,20 @@ def main(opt):
         w,h = Image.open(image_path).size
         source_image = load_image(image_path)
         style_image = load_image(image_path)
-
-        if opt.benchmark:
-            result = text_editing_benchmark(pipeline, source_image, style_image, style_text, target_text,
+        result = text_editing(pipeline, source_image, style_image, style_text, target_text,
                                     starting_layer=starting_layer,
                                     ddim_steps=num_inference_steps,
-                                    scale=guidance_scale)
-            GaMuSA_image = result
+                                    scale=guidance_scale,
+        )
+        if opt.benchmark:
+            _, GaMuSA_image = result[:]
             GaMuSA_image = Image.fromarray((GaMuSA_image * 255).astype(np.uint8))
             GaMuSA_image.save(os.path.join(output_dir, image_name))
 
         else:
             save_dir = os.path.join(output_dir, image_name.split('.')[0])
             os.makedirs(save_dir, exist_ok=True)
-            result = text_editing_demo(pipeline, source_image, style_image, style_text, target_text,
-                                    starting_layer=starting_layer,
-                                    ddim_steps=num_inference_steps,
-                                    scale=guidance_scale)
-            reconstruction_image, _, GaMuSA_image = result[:]
-
+            reconstruction_image, GaMuSA_image = result[:]
             reconstruction_image = Image.fromarray((reconstruction_image * 255).astype(np.uint8)).resize((w, h))
             GaMuSA_image = Image.fromarray((GaMuSA_image * 255).astype(np.uint8)).resize((w, h))
             reconstruction_image.save(os.path.join(save_dir, 'recons_' + style_text + '.png'))
