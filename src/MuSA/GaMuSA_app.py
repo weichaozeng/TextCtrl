@@ -3,16 +3,12 @@ from pytorch_lightning import seed_everything
 import torch
 
 def text_editing_demo(model, source_image, style_image, style_text, target_text,
-                   starting_layer=10, ddim_steps=50, scale=2, seed=42):
+                   starting_layer=10, ddim_steps=50, scale=2):
 
     device = model.device
-    seed_everything(seed)
-
     with torch.no_grad():
         prompts = [style_text, target_text]
         inversion_prompt = [style_text]
-
-
         start_code, latents_list = model.inversion(source_image,
                                                 style_image,
                                                 inversion_prompt,
@@ -51,11 +47,8 @@ def text_editing_demo(model, source_image, style_image, style_text, target_text,
 
 
 def text_editing_benchmark(model, source_image, style_image, style_text, target_text,
-                   starting_layer=10, ddim_steps=50, scale=2, seed=42):
-
+                   starting_layer=10, ddim_steps=50, scale=2):
     device = model.device
-
-
     with torch.no_grad():
         prompts = [style_text, target_text]
         inversion_prompt = [style_text]
