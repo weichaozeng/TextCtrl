@@ -50,7 +50,7 @@ model:
         pretrained: weights/ocr_model.pth
         optimize: false
         max_length: 25
-        charset_path: src/abinet/data/charset_36.txt
+        charset_path: src/module/abinet/data/charset_36.txt
         iter_size: 3
         ensemble: ''
         use_vision: False
@@ -61,7 +61,7 @@ model:
           backbone: 'transformer'
           backbone_ln: 3
           max_length: 25
-          charset_path: src/abinet/data/charset_36.txt
+          charset_path: src/module/abinet/data/charset_36.txt
         language:
           checkpoint:
           num_layers: 4
@@ -69,8 +69,8 @@ model:
           detach: True
           use_self_attn: False
           max_length: 25
-          charset_path: src/abinet/data/charset_36.txt
+          charset_path: src/module/abinet/data/charset_36.txt
         alignment:
           loss_weight: 1.
           max_length: 25
-          charset_path: src/abinet/data/charset_36.txt
+          charset_path: src/module/abinet/data/charset_36.txt
