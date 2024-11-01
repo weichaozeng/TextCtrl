@@ -27,8 +27,7 @@ Download the checkpoints from Link (still preparing) and unzip the files.The fil
 TextCtrl/
 ├── weights/
 │   ├── sd/                            # pretrained weight of stable-diffusion-v1-5
-│   ├── model.pth                      # textctrl weight
-│   ├── style_encoder.ckpt             # pretrained style encoder ckpt
+│   ├── model.pth                      # weight of style encoder and unet 
 │   ├── text_encoder.ckpt              # pretrained glyph encoder ckpt
 │   ├── vision_model.pth               # monitor weight
 │   ├── ocr_model.pth                  # ocr weight
