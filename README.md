@@ -66,6 +66,15 @@ The inference result could be found in *example_result/* after:
 $ PYTHONPATH=.../TextCtrl/ python inference.py
 ```
 
+### 2.4 Inference Results
+| Source Images | Target Text | Infer Results | Reference GT |
+| ---           |     ---     |     ---       |        --- |
+| <img src="./demo/demo_results/s_0.png" width="200">  |   *"Private"*   |    <img src="./demo/demo_results/t_0.png" width="200">   |   <img src="./demo/demo_results/r_0.png" width="200">    |
+| <img src="./demo/demo_results/s_1.png" width="200">  |   *"First"*     |    <img src="./demo/demo_results/t_1.png" width="200">   |   <img src="./demo/demo_results/r_1.png" width="200">    |
+| <img src="./demo/demo_results/s_2.png" width="200">  |   *"RECORDS"*   |    <img src="./demo/demo_results/t_2.png" width="200">   |   <img src="./demo/demo_results/r_2.png" width="200">    |
+| <img src="./demo/demo_results/s_3.png" width="200">  |   *"Sunset"*    |    <img src="./demo/demo_results/t_3.png" width="200">   |   <img src="./demo/demo_results/r_3.png" width="200">    |
+| <img src="./demo/demo_results/s_4.png" width="200">  |   *"Network"*   |    <img src="./demo/demo_results/t_4.png" width="200">   |   <img src="./demo/demo_results/r_4.png" width="200">    |
+
 
 
 ## 3 Training
