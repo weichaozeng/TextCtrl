@@ -78,6 +78,9 @@ $ PYTHONPATH=.../TextCtrl/ python inference.py
 
 
 ## 3 Training
+### 3.1 Data Preparation
+
+
 
 ## 4 Evaluation
 ### 4.1 Data Preparation
