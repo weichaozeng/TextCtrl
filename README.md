@@ -7,7 +7,7 @@ Pytorch implementation of [TextCtrl: Diffusion-based Scene Text Editing with Pri
 ## TODOs
 - [x] Release ScenePair benchmark dataset and evaluation code;
 - [x] Release the model and inference code;
-- [ ] Release checkpoints and training code;
+- [x] Release checkpoints and training code;
 - [ ] Provide publicly accessible demo link;
 
 
@@ -24,7 +24,7 @@ $ pip install torch==1.13.0+cu116 torchvision==0.14.0+cu116 torchaudio==0.13.0 -
 $ pip install -r requirement.txt
 ```
 ### 1.2 Checkpoints Preparation
-Download the checkpoints from [Link_1](still preparing) and [Link_2](https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-v1-5).The file structure should be set as follows:
+Download the checkpoints from [Link_1](https://drive.google.com/drive/folders/1OMgXXIXi-VN2hTlPywtdzIW5AJMIHzF0?usp=drive_link) and [Link_2](https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-v1-5).The file structure should be set as follows:
 ```bash
 TextCtrl/
 ├── weights/
@@ -51,11 +51,21 @@ TextCtrl/
 │   └── i_t.txt             # filename and text label of target images
 ```
 
-### 2.2 Generate Images
+### 2.2 Edit Arguments
+Edit the arguments in *inference.py*, especially:
+```bash
+parser.add_argument("--ckpt_path", type=str, default="weights/model.pth")
+parser.add_argument("--dataset_dir", type=str, default="example/")
+parser.add_argument("--output_dir", type=str, default="example_result/")
+```
+
+
+### 2.3 Generate Images
 The inference result could be found in *example_result/* after:
 ```bash
 $ PYTHONPATH=.../TextCtrl/ python inference.py
 ```
+
 
 
 ## 3 Training
