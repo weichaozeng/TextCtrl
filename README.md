@@ -5,9 +5,9 @@ Pytorch implementation of [TextCtrl: Diffusion-based Scene Text Editing with Pri
 ![TextCtrl_model](demo/TextCtrl.png)
 
 ## TODOs
-- [x] Release ScenePair benchmark dataset and evaluation code;
-- [x] Release the model and inference code;
-- [x] Release checkpoints and training code;
+- [x] Release ScenePair benchmark dataset and code of model;
+- [x] Release checkpoints and inference code;
+- [ ] Release tranining code;
 - [ ] Provide publicly accessible demo link;
 
 
