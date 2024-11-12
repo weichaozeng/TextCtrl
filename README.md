@@ -98,7 +98,12 @@ Syn_data/
 └── eval/
     └── eval-1k/ 
 ```
-### 3.2 Style Pretraining
+### 3.2 Text Style Pretraining
+Text style pretraining relies on the fine-grained synthetic data and serves as a pretext tasks for editing. 
+
+### 3.3 Text Glyph Pretraining
+
+### 3.4 Prior Guided Training
 
 
 ## 4 Evaluation
