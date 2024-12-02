@@ -33,6 +33,7 @@ TextCtrl/
 │   ├── vision_model.pth               # monitor weight
 │   ├── ocr_model.pth                  # ocr weight
 │   ├── vgg19.pth                      # vgg weight
+│   ├── vitstr_base_patch16_224.pth    # vitstr weight
 │   └── sd/                            # pretrained weight of stable-diffusion-v1-5
 │       ├── vae/
 │       ├── unet/
