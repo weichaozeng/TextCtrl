@@ -1,0 +1,47 @@
+# path
+ckpt_dir:
+
+
+dataset:
+  target: dataset.dataloader.LabelDataset
+  params:
+    size: 224
+    length: 100000
+    font_path: ".../Syn_data/fonts/"
+    min_len: 1
+    max_len: 24
+
+model:
+  target: src.module.textencoder.modules.LabelEncoder
+  params:
+    trainable: True
+    max_len: 24
+    emb_dim: 768
+    n_heads: 8
+    n_trans_layers: 12
+    lr: 1e-5
+
+    visual_config:
+      target: src.module.textencoder.modules.ViTSTREncoder
+      params:
+        freeze: True
+        ckpt_path: ".weights/vitstr_base_patch16_224.pth"
+        size: 224
+        patch_size: 16
+        embed_dim: 768
+        depth: 12
+        num_heads: 12
+        mlp_ratio: 4
+        qkv_bias: True
+        in_chans: 1
+
+
+num_workers: 8
+batch_size: 256
+check_freq: 10
+
+lightning:
+  max_epochs: 100
+  accelerator: "cuda"
+  devices: [0, 1, 2, 3]
+  default_root_dir: "./logs/pre_glyph_logs"
