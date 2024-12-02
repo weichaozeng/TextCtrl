@@ -1,0 +1,65 @@
+# path
+ckpt_path:
+#load_ckpt_path:
+
+
+data:
+  target: "dataset.WrappedDataModule"
+  batch_size: 256
+  train:
+    size: 128
+    root_dir: ".../Syn_data/train/"
+    font_dir: ".../Syn_data/fonts/"
+    template_font: ".../Syn_data/fonts/arial.ttf"
+
+  validation:
+    size: 128
+    root_dir: ".../Syn_data/eval/"
+    font_dir: ".../Syn_data/fonts/"
+    template_font: ".../Syn_data/fonts/arial.ttf"
+
+num_workers: 16
+check_freq: 10
+
+
+
+model:
+  target: trainer.StyleNet
+  params:
+    image_size: 128
+    patch_size: 16
+    in_chans: 3
+    num_classes: 0
+    emb_dim: 768
+    ckpt_path:
+    trainable: True
+    lr: 1e-5
+    alpha_removal: 1.0
+    alpha_seg: 1.0
+    alpha_color: 1.0
+    alpha_font: 1.0
+    enable_spatial_head: True
+    enable_glyph_head: True
+
+
+
+
+
+lightning:
+  log_every_n_steps: 50
+  accumulate_grad_batches: 1
+  max_epochs: 80
+  accelerator: "cuda"
+  devices: [0, 1, 2, 3]
+  strategy: ddp
+  default_root_dir: "./logs/pre_style_logs"
+
+
+imagelogger_callback:
+  target: "trainer.StyleNetImageLogger"
+  params:
+    train_batch_frequency: 4500
+    valid_batch_frequency: 2
+    disable_wandb: false
+    generation_kwargs:
+      seed: 42
