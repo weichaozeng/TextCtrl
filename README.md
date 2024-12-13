@@ -1,5 +1,5 @@
 # TextCtrl: Diffusion-based Scene Text Editing with Prior Guidance Control
-Pytorch implementation of [TextCtrl: Diffusion-based Scene Text Editing with Prior Guidance Control](https://arxiv.org/abs/2410.10133).
+Pytorch implementation of [TextCtrl: Diffusion-based Scene Text Editing with Prior Guidance Control](https://arxiv.org/abs/2410.10133). --NeurIPS 2024
 
 <a href='https://arxiv.org/abs/2410.10133'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a> <a href='https://github.com/weichaozeng/TextCtrl'><img src='https://img.shields.io/badge/Code-Github-green'></a>
 ![TextCtrl_model](demo/TextCtrl.png)
