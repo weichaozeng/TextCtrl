@@ -117,6 +117,15 @@ $ python train.py
 ```
 
 ### 3.3 Text Glyph Pretraining
+```bash
+$ cd preglyph/
+# Modify the path of dir in the config file
+$ cd configs/
+$ vi GlyphTrain.yaml
+# Start pretraining
+$ cd ..
+$ python pretrain.py
+```
 
 ### 3.4 Prior Guided Training
 
