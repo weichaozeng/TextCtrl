@@ -7,7 +7,7 @@ from utils import instantiate_from_config
 from torchvision import transforms
 from timm.models.vision_transformer import VisionTransformer
 import numpy as np
-
+import pytorch_lightning as pl
 
 def autocast(f, enabled=True):
     def do_autocast(*args, **kwargs):
