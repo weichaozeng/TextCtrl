@@ -1,0 +1,114 @@
+data:
+  target: "src.dataset.textdata.WrappedDataModule"
+  batch_size: 8
+  train:
+    size: 256
+    root_dir: ".../Syn_data/train/"
+    font_dir: ".../Syn_data/fonts/"
+
+  validation:
+    size: 256
+    root_dir: ".../Syn_data/train/"
+    font_dir: ".../Syn_data/fonts/"
+
+
+
+model:
+  target: "src.trainer.CtrlBase.ControlBase"
+  params:
+    control_config:
+      target: "src.trainer.CtrlBase.StylePyramidNet"
+      params:
+        image_size: 256
+        patch_size: 16
+        in_channels: 3
+        embed_dim: 768
+        model_channels: 320
+        channel_mult: [ 1, 2, 4, 4 ]
+        pyramid_sizes: [ 32, 16, 8, 4]
+        use_checkpoint: True
+
+
+    base_config:
+      noise_scheduler: "diffusers.PNDMScheduler"
+      scheduler_config: ".../weights/sd/scheduler/scheduler_config.json"
+      num_inference_steps: 50
+      min_training_steps: 0
+
+      vae:
+        pretrained: ".../weights/sd/vae/"
+        normalizer: 0.18215
+
+      text_encoder_optimized: False
+      text_encoder:
+        target: "src.module.textencoder.modules.LabelEncoder"
+        params:
+          max_len: 24
+          emb_dim: 768
+          ckpt_path: ".../weights/text_encoder.pth"
+
+      unet_pretrained: ".../weights/sd/unet/diffusion_pytorch_model.bin"
+      unet:
+        target: "src.trainer.CtrlBase.ControlUNetModel"
+        params:
+          cross_attention_dim: 768
+
+      reconstruction_loss: True
+      ocr_loss_alpha: 0.01
+      cond_on_text_image: False
+      font_path: ".../Syn_data/fonts/arial.ttf"
+
+      ocr_model:
+        height: 32
+        width: 128
+        ocr_supervised: True
+        pretrained: ".../weights/ocr_model.pth"
+        optimize: false
+        max_length: 25
+        charset_path: ".../src/module/abinet/data/charset_36.txt"
+        iter_size: 3
+        ensemble: ''
+        use_vision: False
+        vision:
+          checkpoint:
+          loss_weight: 1.
+          attention: 'position'
+          backbone: 'transformer'
+          backbone_ln: 3
+          max_length: 25
+          charset_path: ".../src/module/abinet/data/charset_36.txt"
+        language:
+          checkpoint:
+          num_layers: 4
+          loss_weight: 1.
+          detach: True
+          use_self_attn: False
+          max_length: 25
+          charset_path: ".../src/module/abinet/data/charset_36.txt"
+        alignment:
+          loss_weight: 1.
+          max_length: 25
+          charset_path: ".../src/module/abinet/data/charset_36.txt"
+
+      vgg_weight: ".../weights/vgg19.pth"
+
+#####################################################Lightning##########################################
+lightning:
+  log_every_n_steps: 32
+  accumulate_grad_batches: 8
+  max_epochs: 100
+  accelerator: "gpu"
+  strategy: ddp
+  default_root_dir: "./logs"
+
+image_logger:
+  target: "src.trainer.Base.BaseImageLogger"
+  params:
+    train_batch_frequency: 2000
+    valid_batch_frequency: 2
+    disable_wandb: false
+    generation_kwargs:
+      num_inference_steps: 50
+      num_sample_per_image: 1
+      guidance_scale: 2
+      seed: 42
