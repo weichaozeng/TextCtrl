@@ -151,7 +151,7 @@ class ViTSTREncoder(VisionTransformer):
         return self(x)
 
 
-class LabelEncoder(AbstractEmbModel):
+class LabelEncoder(AbstractEmbModel, pl.LightningModule):
 
     def __init__(self, max_len, emb_dim, n_heads=8, n_trans_layers=12, ckpt_path=None, trainable=False,
                  lr=1e-4, clip_dim=1024, visual_len=197, visual_dim=768,
