@@ -105,7 +105,6 @@ Syn_data/
 
 ```
 ### 3.2 Text Style Pretraining
-Text style pretraining relies on the fine-grained synthetic data and serves as a pretext tasks for editing. 
 ```bash
 $ cd prestyle/
 # Modify the path of dir in the config file
@@ -128,6 +127,8 @@ $ python pretrain.py
 ```
 
 ### 3.4 Prior Guided Training
+
+
 
 
 ## 4 Evaluation
