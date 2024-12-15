@@ -6,7 +6,7 @@ import torch.utils.data as data
 from omegaconf import OmegaConf
 from PIL import Image, ImageDraw, ImageFont
 from random import choice, randint
-from utilS import *
+from utils import *
 
 class LabelDataset(data.Dataset):
 
