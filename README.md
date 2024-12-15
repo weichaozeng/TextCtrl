@@ -7,7 +7,7 @@ Pytorch implementation of [TextCtrl: Diffusion-based Scene Text Editing with Pri
 ## TODOs
 - [x] Release ScenePair benchmark dataset and code of model;
 - [x] Release checkpoints and inference code;
-- [ ] Release tranining pipeline;
+- [x] Release tranining pipeline;
 - [ ] Provide publicly accessible demo link;
 
 
@@ -127,7 +127,15 @@ $ python pretrain.py
 ```
 
 ### 3.4 Prior Guided Training
-
+```bash
+$ cd TextCtrl/
+# Modify the path of dir in the config file
+$ cd configs/
+$ vi train.yaml
+# Start pretraining
+$ cd ..
+$ python train.py
+```
 
 
 
