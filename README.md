@@ -29,7 +29,8 @@ Download the checkpoints from [Link_1](https://drive.google.com/drive/folders/1O
 TextCtrl/
 ├── weights/
 │   ├── model.pth                      # weight of style encoder and unet 
-│   ├── text_encoder.pth               # weight of glyph encoder
+│   ├── text_encoder.pth               # weight of pretrained glyph encoder
+│   ├── style_encoder.pth              # weight of pretrained style encoder
 │   ├── vision_model.pth               # monitor weight
 │   ├── ocr_model.pth                  # ocr weight
 │   ├── vgg19.pth                      # vgg weight
