@@ -116,7 +116,6 @@ class ResNet(nn.Module):
         self.layer2 = self._make_layer(block, 128, layers[1], stride=2)
         self.layer3 = self._make_layer(block, 256, layers[2], stride=1, dilation=2)
         #self.layer4 = self._make_layer(block, 512, layers[3], stride=1, dilation=4)
-        # 为了对齐 进行修改
         self.layer4 = self._make_layer(block, 768, layers[3], stride=1, dilation=4)
 
         for m in self.modules():
