@@ -5,6 +5,7 @@ Prior Guidance Control [NeurIPS 2024] </em></h1>
 <p align="center">
 <a href='https://arxiv.org/abs/2410.10133'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a> 
 <a href='https://github.com/weichaozeng/TextCtrl'><img src='https://img.shields.io/badge/Code-Github-green'></a>
+<a href='https://github.com/weichaozeng/TextCtrl'><img src="https://visitor-badge.laobi.icu/badge?page_id=weichaozeng.TextCtrl" alt="visitor badge"/></a>
 </p>
 
 ![TextCtrl_model](demo/TextCtrl.png)
