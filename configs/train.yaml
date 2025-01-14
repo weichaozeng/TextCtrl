@@ -8,7 +8,7 @@ data:
 
   validation:
     size: 256
-    root_dir: ".../Syn_data/train/"
+    root_dir: ".../Syn_data/eval/"
     font_dir: ".../Syn_data/fonts/"
 
 
