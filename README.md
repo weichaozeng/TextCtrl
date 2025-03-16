@@ -14,7 +14,6 @@ Prior Guidance Control [NeurIPS 2024] </em></h1>
 - [x] Release ScenePair benchmark dataset and code of model;
 - [x] Release checkpoints and inference code;
 - [x] Release tranining pipeline;
-- [ ] Provide demo link;
 
 
 ## 1 Installation
@@ -184,8 +183,10 @@ Many thanks to these great projects [lksshw/SRNet](https://github.com/lksshw/SRN
 
 ## Citation
     @article{zeng2024textctrl,
-    title={TextCtrl: Diffusion-based Scene Text Editing with Prior Guidance Control},
-    author={Zeng, Weichao and Shu, Yan and Li, Zhenhang and Yang, Dongbao and Zhou, Yu},
-    journal={arXiv preprint arXiv:2410.10133},
-    year={2024}
+      title={TextCtrl: Diffusion-based scene text editing with prior guidance control},
+      author={Zeng, Weichao and Shu, Yan and Li, Zhenhang and Yang, Dongbao and Zhou, Yu},
+      journal={Advances in Neural Information Processing Systems},
+      volume={37},
+      pages={138569--138594},
+      year={2024}
     }
